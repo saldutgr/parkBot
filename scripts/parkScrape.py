@@ -1,10 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
-import csv
 import time
 import json
-import os
+
 
 html = 'https://pcia2.com/parking-locations-availability/'
 
@@ -23,21 +22,21 @@ textList = []
 for line in l:
     textList.append(line.text)
 
-col_list=["structure","total","inUse","free"]
+col_list=["structure","total","inUse","free","dateTime"]
 
 n=4
 
 def slice_per(source, step):
     return [source[i::step] for i in range(step)]
 
-lists=slice_per(textList, 4)
-data = list(zip(lists[0],lists[1],lists[2],lists[3]))
+lists=slice_per(textList, 5)
+data = list(zip(lists[0],lists[1],lists[2],lists[3],lists[4]))
 
 
 df = pd.DataFrame(data, columns = col_list)
 
 
-df.iloc[:,1:] = df.iloc[:,1:].astype(float)
+df.iloc[:,1:4] = df.iloc[:,1:4].astype(float)
 
 recordTime = time.time()
 
@@ -66,12 +65,10 @@ str=convertTuple(tweet)
 
 spaces['tweet'] = str
 
+print(df)
 
 with open("/home/saldutgr/parkingBot/output/tweet.json", "w") as outfile:
     json.dump(spaces, outfile)
-
-
-
 
 
 
