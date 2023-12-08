@@ -29,7 +29,9 @@ n=4
 def slice_per(source, step):
     return [source[i::step] for i in range(step)]
 
-lists=slice_per(textList, 5)
+lists=slice_per(textList, 6)
+
+print(lists)
 data = list(zip(lists[0],lists[1],lists[2],lists[3],lists[4]))
 
 
@@ -41,6 +43,7 @@ df.iloc[:,1:4] = df.iloc[:,1:4].astype(float)
 recordTime = time.time()
 
 df['recordTime'] = recordTime
+
 
 with open("/home/saldutgr/parkingBot/output/a2_structure_data.txt", mode='a') as csvFile:
     df.to_csv(csvFile, header=False, index=False)
