@@ -64,8 +64,8 @@ spaces={'freeSpaces': df['free'].sum(),\
 
 tweet="Bleep, blorp...blop...There are currently " , "{:,}".format(round(spaces['freeSpaces'])),\
      " free spaces available in A2 parking lots. That's ", "{:,}".format(round(spaces['squareFeet'])), " square feet " \
-        "of unused space in downtown Ann Arbor! Maybe the city could remove more on street parking and put that space to better use! "\
-       "@A2DDA @A2GOV #a2council #parkingreform"
+        "of unused space in downtown Ann Arbor! By removing more on street parking, we can put that space to better use. "\
+       "@A2DDA @A2GOV #parkingreform"
 
 def convertTuple(tup):
     str = ''.join(tup)
